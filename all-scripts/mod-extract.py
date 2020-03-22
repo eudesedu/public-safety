@@ -22,13 +22,13 @@ def main():
     """
     parser = argparse.ArgumentParser(description=descr)
     parser.add_argument('-load_dataset', 
-                        dest='load_dataset_crimes_full', 
+                        dest='load_dataset', 
                         action='store_const', 
                         const=True, 
                         help='Call the environment function')
     cmd_args = parser.parse_args()
-    importlib.import_module('config')
-    if cmd_args.env_config: 
+    importlib.import_module('mod-environment')
+    if cmd_args.load_dataset: 
         f_load_dataset_crimes_full(os.environ.get('API_URL'), 
                                    os.environ.get('API_TOKEN'), 
                                    os.environ.get('API_EMAIL'), 

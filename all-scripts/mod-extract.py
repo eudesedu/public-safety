@@ -1,4 +1,3 @@
-# Install these packages before running:
 import pandas as pd
 from sodapy import Socrata
 import importlib
@@ -6,12 +5,12 @@ import argparse
 import os
 import sys
 
-def f_load_dataset_crimes_full(url, token, email, password):
+def f_load_dataset_crimes_full(url, token, email, password, tag):
     """
     Non-public datasets require a token authentication to extract the full records of information.
     """
-    d_crime_full = Socrata(url, token, username=email, password=password)
-    d_crime_full = pd.DataFrame.from_records(d_crime_full)
+    d_crime_socrata = Socrata(url, token, email, password).get(tag, limit=20)
+    d_crime_full = pd.DataFrame.from_records(d_crime_socrata)
     return d_crime_full
 
 def main():
@@ -33,7 +32,8 @@ def main():
         f_load_dataset_crimes_full(os.environ.get('API_URL'), 
                                    os.environ.get('API_TOKEN'), 
                                    os.environ.get('API_EMAIL'), 
-                                   os.environ.get('API_PASSWORD'))
+                                   os.environ.get('API_PASSWORD'),
+                                   os.environ.get('API_TAG'))
 
 if __name__ == '__main__':
     main()

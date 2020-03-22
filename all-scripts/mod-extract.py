@@ -13,7 +13,7 @@ def f_load_dataset_crimes_full(url, token, email, password, tag):
     d_crime_full = pd.DataFrame.from_records(d_crime_socrata)
     return d_crime_full
 
-def main():
+def f_main():
     """
     Automated execution to generate the environment configuration.
     """
@@ -36,5 +36,5 @@ def main():
                                    os.environ.get('API_TAG'))
 
 if __name__ == '__main__':
-    main()
+    f_main()
     sys.exit(0)

@@ -42,7 +42,7 @@ def f_load_crimes_full_csv(setwd):
 
 def f_main():
     """
-    Automated execution to generate the environment configuration and parser argument.
+    Automated execution to generate the environment configuration and parser argument..
     """
     descr = """
         Define the parser argument to load a dataset via Socrata.

@@ -5,11 +5,11 @@ import argparse
 import os
 import sys
 
-def f_load_dataset_crimes_full(url, token, email, password, tag):
+def f_load_crimes_full_socrata(url, token, email, password, tag):
     """
     Non-public datasets require a token authentication to extract the full records of information.
     """
-    d_crime_socrata = Socrata(url, token, email, password).get(tag, limit=20)
+    d_crime_socrata = Socrata(url, token, email, password).get(tag, limit=50000)
     d_crime_full = pd.DataFrame.from_records(d_crime_socrata)
     return d_crime_full
 
@@ -21,15 +21,15 @@ def f_main():
         Define the parser argument.
     """
     parser = argparse.ArgumentParser(description=descr)
-    parser.add_argument('-load_dataset', 
-                        dest='load_dataset', 
+    parser.add_argument('-load_dataset_socrata', 
+                        dest='load_dataset_socrata', 
                         action='store_const', 
                         const=True, 
                         help='Call the environment function')
     cmd_args = parser.parse_args()
     importlib.import_module('mod-environment')
-    if cmd_args.load_dataset: 
-        f_load_dataset_crimes_full(os.environ.get('API_URL'), 
+    if cmd_args.load_dataset_socrata: 
+        f_load_crimes_full_socrata(os.environ.get('API_URL'), 
                                    os.environ.get('API_TOKEN'), 
                                    os.environ.get('API_EMAIL'), 
                                    os.environ.get('API_PASSWORD'),

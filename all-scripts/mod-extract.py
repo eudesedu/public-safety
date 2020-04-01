@@ -16,7 +16,7 @@ def f_load_crimes_full_socrata(url, token, email, password, tag):
 
 def f_load_crimes_full_csv(setwd):
     """
-    Chicago crimes dataset from 2001 to present for offline use in other applications.
+    Chicago crimes dataset from 2001 to present for offline load.
     """
     os.chdir(setwd)
     variable_list = ['ID', 

@@ -14,5 +14,4 @@ def f_env_config():
     os.environ['API_TAG'] = 'ijzp-q8t2' # Dataset Identifier.
     # Local dataset directory:
     os.environ['DIR_DATASET'] = 'C:\\Users\\eudes\\Documents\\python\\dataset'
-
 f_env_config()

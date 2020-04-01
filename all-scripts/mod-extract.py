@@ -4,6 +4,7 @@ import importlib
 import argparse
 import os
 import sys
+import getpass
 
 def f_load_crimes_full_socrata(url, token, email, password, tag):
     """

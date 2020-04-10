@@ -7,13 +7,13 @@ import os
 import sys
 import getpass
 
-def f_load_crimes_full_socrata(url, token, email, password, tag):
+def f_load_crimes_sample_socrata(url, token, email, password, tag):
     """
     Non-public datasets require a token authentication to extract a sample of records.
     """
     d_crime_socrata = Socrata(url, token, email, password).get(tag, limit=100)
-    d_crime_full = pd.DataFrame.from_records(d_crime_socrata)
-    return d_crime_full
+    d_crime_sample = pd.DataFrame.from_records(d_crime_socrata)
+    return print(d_crime_sample)
 
 def f_load_crimes_full_csv(setwd):
     """
@@ -34,7 +34,7 @@ def f_load_crimes_full_csv(setwd):
                                                              'Community Area': 'float16',
                                                              'Latitude': 'float16',
                                                              'Longitude': 'float16'})
-    return d_crime_csv
+    return print(d_crime_csv)
 
 def f_main():
     """
@@ -59,7 +59,7 @@ def f_main():
     # and access tokens to set function arguments.
     importlib.import_module('mod-environment')
     if cmd_args.load_dataset_socrata: 
-        f_load_crimes_full_socrata(os.environ.get('API_URL'), 
+        f_load_crimes_sample_socrata(os.environ.get('API_URL'), 
                                    os.environ.get('API_TOKEN'), 
                                    os.environ.get('API_EMAIL'), 
                                    os.environ.get('API_PASSWORD'),

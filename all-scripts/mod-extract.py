@@ -11,7 +11,7 @@ def f_load_crimes_full_socrata(url, token, email, password, tag):
     """
     Non-public datasets require a token authentication to extract a sample of records.
     """
-    d_crime_socrata = Socrata(url, token, email, password).get(tag, limit=1000)
+    d_crime_socrata = Socrata(url, token, email, password).get(tag, limit=100)
     d_crime_full = pd.DataFrame.from_records(d_crime_socrata)
     return d_crime_full
 
@@ -55,10 +55,10 @@ def f_main():
                         const=True, 
                         help='Call the f_load_crimes_full_csv function')
     cmd_args = parser.parse_args()
+    # The environment configuration is a dictionary of path directory, URLs, email, passwords, 
+    # and access tokens to set function arguments.
+    importlib.import_module('mod-environment')
     if cmd_args.load_dataset_socrata: 
-        # The environment configuration is a dictionary of path directory, URLs, email, passwords, 
-        # and access tokens to set function arguments.
-        importlib.import_module('mod-environment')
         f_load_crimes_full_socrata(os.environ.get('API_URL'), 
                                    os.environ.get('API_TOKEN'), 
                                    os.environ.get('API_EMAIL'), 

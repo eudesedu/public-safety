@@ -9,10 +9,6 @@ on:
   pull_request:
     branches: [ master ]
     
-language: node_js
-node_js:
-    - 12
-    
 jobs:
   build:
 

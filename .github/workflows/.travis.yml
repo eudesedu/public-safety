@@ -33,9 +33,9 @@ jobs:
         echo test, and deploy your project.
     
     - language: node_js
-    - node_js:
+      node_js:
           - 12
-    - script:
+      script:
           - node tools/ci-checks.js
-    - cache:
+      cache:
           npm: false

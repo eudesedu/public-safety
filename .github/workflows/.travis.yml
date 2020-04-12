@@ -9,6 +9,7 @@ env:
     - EMBER_VERSION=canary
 
 before_install:
+    - npm i -g npm@version-number
     # setting the path for phantom.js 2.0.0
     - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
     # starting a GUI to run tests, per https://docs.travis-ci.com/user/gui-and-headless-browsers/#using-xvfb-to-run-tests-that-require-a-gui

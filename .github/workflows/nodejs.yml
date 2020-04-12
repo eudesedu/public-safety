@@ -30,8 +30,3 @@ jobs:
     - run: npm test
       env:
         CI: true
- 
-script:
-    - node tools/ci-checks.js
-cache:
-    npm: false

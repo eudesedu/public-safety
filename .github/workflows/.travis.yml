@@ -31,11 +31,3 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
-    
-    - language: node_js
-      node_js:
-          - 12
-      script:
-          - node tools/ci-checks.js
-      cache:
-          npm: false

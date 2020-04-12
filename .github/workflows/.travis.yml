@@ -8,7 +8,6 @@ env:
     - EMBER_VERSION=beta
     - EMBER_VERSION=canary
 jobs:
-  fast_finish: true
   allow_failures:
     - env: EMBER_VERSION=release
     - env: EMBER_VERSION=beta

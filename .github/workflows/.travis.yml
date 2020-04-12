@@ -10,6 +10,10 @@ on:
   pull_request:
     branches: [ master ]
 
+language: node_js
+node_js:
+    - 12
+    
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -31,3 +35,8 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+        
+script:
+    - node tools/ci-checks.js
+cache:
+    npm: false

@@ -13,6 +13,6 @@ def f_env_config():
     os.environ['API_PASSWORD'] = getpass.getpass(prompt='Socrata-Password: ', stream=None) 
     os.environ['API_TAG'] = 'ijzp-q8t2' # Dataset Identifier.
     # Local dataset directory:
-    os.environ['DIR_DATASET'] = 'C:\\Users\\eudes\\Documents\\python\\dataset'
+    os.environ['DIR_DATASET'] = 'C:\\Users\\eudes\\Documents\\github\\dataset'
     
 f_env_config()

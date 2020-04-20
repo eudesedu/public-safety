@@ -11,7 +11,7 @@ def f_load_crimes_sample_socrata(url, token, email, password, tag):
     """
     Non-public datasets require a token authentication to extract a sample of records.
     """
-    d_crime_socrata = Socrata(url, token, email, password).get(tag, limit=100)
+    d_crime_socrata = Socrata(url, token, email, password).get(tag, limit=10)
     d_crime_sample = pd.DataFrame.from_records(d_crime_socrata)
     return print(d_crime_sample)
 
